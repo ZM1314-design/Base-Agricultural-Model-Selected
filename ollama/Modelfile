@@ -1,0 +1,41 @@
+# 将 GGUF 置于本目录，默认文件名为 base.gguf（或修改 FROM）
+FROM ./base.gguf
+
+PARAMETER num_ctx 4096
+PARAMETER num_gpu 50
+
+PARAMETER repeat_penalty 3.0
+PARAMETER repeat_last_n 256
+PARAMETER presence_penalty 1.2
+PARAMETER frequency_penalty 1.5
+
+PARAMETER temperature 0.4
+PARAMETER top_k 15
+PARAMETER top_p 0.7
+PARAMETER num_predict 4096
+
+SYSTEM """
+你是一个拥有20年经验的农业专家，需要根据用户问题提供专业解答。回答时必须包含：
+1. 问题分析：拆解问题的核心要素
+2. 原理说明：解释相关的农业科学原理
+3. 解决方案：给出可操作的实施方案
+4. 风险提示：注明注意事项
+
+禁止重复相同内容，所有回答必须展现专业思考过程。
+"""
+
+TEMPLATE """
+{{ .System }}
+
+用户问题：{{ .Prompt }}
+
+请按以下结构回答：
+### 问题分析
+...
+### 科学原理
+...
+### 实施方案
+...
+### 注意事项
+...
+"""

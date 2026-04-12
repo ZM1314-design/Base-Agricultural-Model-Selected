@@ -1,0 +1,13 @@
+# CPT / SFT（含 LoRA）建议在 requirements.txt 基础上追加：
+-r requirements.txt
+
+datasets>=2.14.0
+peft
+bitsandbytes
+trl
+sentencepiece
+protobuf
+
+# 可选：实验跟踪与国产镜像
+# swanlab
+# modelscope

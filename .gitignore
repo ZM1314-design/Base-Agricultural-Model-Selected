@@ -1,0 +1,29 @@
+# 模型权重：忽略 models/base 下除占位外的文件
+models/*
+!models/base/
+models/base/*
+!models/base/.gitkeep
+*.gguf
+*.bin
+*.safetensors
+
+# 训练产出
+checkpoints/
+outputs/
+runs/
+wandb/
+swanlog/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
